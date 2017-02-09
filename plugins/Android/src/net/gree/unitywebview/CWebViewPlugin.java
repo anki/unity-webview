@@ -156,6 +156,13 @@ public class CWebViewPlugin {
                 // Log.i("CWebViewPlugin", "Build.VERSION.SDK_INT = " + Build.VERSION.SDK_INT);
                 webSettings.setAllowUniversalAccessFromFileURLs(true);
             }
+            
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            	webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+            } else {
+            	webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+            }
+            
             webSettings.setDatabaseEnabled(true);
             webSettings.setDomStorageEnabled(true);
             String databasePath = webView.getContext().getDir("databases", Context.MODE_PRIVATE).getPath();
